@@ -1,0 +1,8 @@
+name: Gates
+main: fi.dy.esav.Gates.Gates
+version: 0.1
+commands:
+   gate:
+      description: beta
+      usage: |
+         /gate create <name> | destroy
