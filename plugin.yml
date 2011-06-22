@@ -1,6 +1,6 @@
 name: Gates
 main: fi.dy.esav.Gates.Gates
-version: 0.1
+version: 0.2
 commands:
    gate:
       description: beta

@@ -13,11 +13,12 @@ public class Gate {
 	Location p1, p2;
 	String name;
 	Material material;
+	boolean state = true;
 
-	static double x, y, z;
-	
+
+
 	static List<Gate> gates = new ArrayList<Gate>();
-	
+
 	public static void createGate(String name, Location p1, Location p2, Material m) {
 		Gate g = new Gate(name, p1, p2, m);
 		gates.add(g);
@@ -25,12 +26,20 @@ public class Gate {
 			b.setType(g.getMaterial());
 		}
 	}
+	
+	public static Gate getGateByName(String name) {
+		for (Gate g : gates) {
+			if (g.getName().equalsIgnoreCase(name)) return g;
+			
+		}
+		return null;
+	}
+
+
+	static double x, y, z;
 
 	public Gate(String name, Location p1, Location p2, Material m) {
-		System.out.println("Creating Gate");
-		System.out.println("Pre P1 + P2");
-		System.out.println(p1.getBlockX() + " , " + p1.getBlockY() + " , " + p1.getBlockZ());
-		System.out.println(p2.getBlockX() + " , " + p2.getBlockY() + " , " + p2.getBlockZ());
+
 		this.name = name;
 		this.material = m;
 		Location tmp1 = p1.clone();
@@ -38,10 +47,10 @@ public class Gate {
 
 		tmp1 = Tools.getHighPos(p1, p2);
 		tmp2 = Tools.getLowPos(p1, p2);
-		
+
 		p1=tmp1;
 		p2=tmp2;
-		
+
 		this.p1=p1;
 		this.p2=p2;	
 
@@ -59,7 +68,7 @@ public class Gate {
 			}
 			x++;
 		}
-		
+
 		for (Block block : getBlocks()) {
 			block.setType(getMaterial());
 		}
@@ -104,4 +113,27 @@ public class Gate {
 		return blocks;
 	}
 
+	public boolean getState() {
+		return state;
+	}
+
+	void setState(boolean state) {
+		this.state = state;
+	}
+
+	public void toggleState() {
+		if (getState()) {
+			setState(false);
+			for (Block b : getBlocks()) {
+				b.setType(Material.AIR);
+			} 
+		} else {
+			setState(true);
+			for (Block b : getBlocks()) {
+				b.setType(getMaterial());
+			}
+		}
+
+	}
 }
+

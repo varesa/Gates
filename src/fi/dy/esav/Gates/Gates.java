@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.bukkit.Server;
 import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,42 +15,8 @@ public class Gates<creating> extends JavaPlugin {
 
 	public static List<Gate> gates = new ArrayList<Gate>();
 
-
-
-/*	public void destroyGateByBlock(Block b) {
-		Gate gate = getGateByBlock(b);
-		if (gate == null)
-			return;
-		gates.remove(gate);
-	}
-
-	public void destroyGate(String n) {
-		Gate gate = getGateByName(n);
-		if (gate == null)
-			return;
-		gates.remove(gate);
-
-	}
-
-	public Gate getGateByBlock(Block b) {
-		for (Gate g : gates) {
-			if (g.getBlocks().contains(b)) {
-				return g;
-			}
-		}
-		return null;
-	}
-
-	public Gate getGateByName(String name) {
-		for (Gate g : gates) {
-			if (g.getName() == name) {
-				return g;
-			}
-		}
-		return null;
-	}*/
-
-
+	Server server = getServer();
+	
 
 	GatesBlockListener BlockListener = new GatesBlockListener(this);
 

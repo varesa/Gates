@@ -24,17 +24,23 @@ public class GatesCommandExecutor implements CommandExecutor {
 			if (arg3.length == 2) {
 
 				if (GateCreator.isGCByPlayer(pname)) {
-					sender.sendMessage("You are already creating a gate. Please abort it first");
-				return true;
+					sender.sendMessage("You are already creating a gate. Please finish or abort it first");
+					return true;
 				}
-				System.out.println("Start");
+				sender.sendMessage("Gates: Creating gate "+ arg3[1] + ", please place 2 cornerblocks");
 				GateCreator.createGateCreator(arg3[1], pname);
 				return true;
 
 			} else sender.sendMessage("You must provide gate name as argument");
 				
 			
-		}	
+		} else if (arg3[0].equalsIgnoreCase("toggle")) {
+			if (arg3[1].length() == 0) return false;
+			if (Gate.getGateByName(arg3[1]) != null) {
+				Gate g = Gate.getGateByName(arg3[1]);
+				g.toggleState();
+			}
+		}
 
 
 		return false;

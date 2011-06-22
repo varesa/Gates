@@ -7,14 +7,20 @@ import org.bukkit.block.Block;
 
 public class GateCreator {
 
-	
+	@SuppressWarnings("rawtypes")
+	public static Gates gates = new Gates();
 	
 	public static List<GateCreator> gcreators = new ArrayList<GateCreator>();
 	
 	public static void createGateCreator(String name, String creator) {
-		System.out.println("Creating GC");
+		
 		GateCreator g = new GateCreator(name, creator);
 		gcreators.add(g);
+
+	}
+	
+	public static void removeGateCreator(GateCreator gc) {
+		gcreators.remove(gc);
 	}
 	
 	public static GateCreator getGateCreatorByPlayer(String player) {
@@ -27,7 +33,6 @@ public class GateCreator {
 	}
 	
 	public static boolean isGCByPlayer(String player) {
-		System.out.println("Checking if GC exists by player");
 		for (GateCreator g : gcreators) {
 			if (g.getCreator() == player) {
 				return true;

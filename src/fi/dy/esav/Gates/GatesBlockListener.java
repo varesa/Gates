@@ -27,6 +27,8 @@ public class GatesBlockListener extends BlockListener {
 				GC.setB2(e.getBlock());
 				GC.setB2IsSet(true);
 				Gate.createGate(GC.getName(), GC.getB1().getLocation(), GC.getB2().getLocation(), GC.getB1().getType());
+				e.getPlayer().sendMessage("Gates: Gate " + GC.getName() + " created.");
+				GateCreator.removeGateCreator(GC);
 			}
 		}
 	
