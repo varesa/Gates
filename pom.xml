@@ -4,17 +4,24 @@
   <artifactId>Gates</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>Gates</name>
+  
+  <scm>
+    <connection>scm:git:ssh://git@github.com/varesa/Gates.git</connection>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>bukkit-repo</id>
+      <url>http://repo.bukkit.org/content/repositories/releases/</url>
+    </repository>
+  </repositories>
+  
   <dependencies>
   	<dependency>
   		<groupId>org.bukkit</groupId>
   		<artifactId>bukkit</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
+  		<version>1.4.6-R0.3</version>
   	</dependency>
   </dependencies>
-    <distributionManagement>
-    <repository>
-      <id>desktop</id>
-      <url>file:///home/esa/deploys</url>
-    </repository>
-  </distributionManagement>
+
 </project>
