@@ -26,10 +26,11 @@ public class Gates<creating> extends JavaPlugin {
 				+ this.getDescription().getVersion() + " started.");
 
 		PluginManager pm = this.getServer().getPluginManager();
-		pm.registerEvent(Event.Type.BLOCK_PLACE, BlockListener,
-				Event.Priority.Normal, this);
+		//pm.registerEvent(Event.Type.BLOCK_PLACE, BlockListener,
+		//		Event.Priority.Normal, this);
 		// pm.registerEvent(Event.Type.BLOCK_BREAK, BlockListener,
 		// Event.Priority.Normal, this);
+		pm.registerEvents(BlockListener, this);
 
 		getCommand("gate").setExecutor(new GatesCommandExecutor());
 

@@ -1,9 +1,11 @@
 package fi.dy.esav.Gates;
 
-import org.bukkit.event.block.BlockListener;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-public class GatesBlockListener extends BlockListener {
+public class GatesBlockListener implements Listener {
 	
 	@SuppressWarnings("rawtypes")
 	public Gates plugin;
@@ -12,6 +14,7 @@ public class GatesBlockListener extends BlockListener {
 		plugin = Instance;
 	}
 	
+	@EventHandler(priority = EventPriority.NORMAL)
 	public void onBlockPlace(BlockPlaceEvent e) {
 		System.out.println("Placed Block");
 		if (GateCreator.isGCByPlayer(e.getPlayer().getName()) == true) {
